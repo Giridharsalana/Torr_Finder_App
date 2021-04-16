@@ -159,14 +159,20 @@ class _HomePageState extends State<HomePage> {
                                       //onPressed: {},
                                     ),
                                     SizedBox(width: 20),
-                                    Icon(FontAwesomeIcons.linkedin, color: Colors.red),
-                                    SizedBox(width: 20),
-                                    Icon(
-                                      FontAwesomeIcons.github,
-                                      color: Colors.red,
+                                    IconButton(
+                                      icon: Icon(FontAwesomeIcons.linkedin, color: Colors.red),
+                                      //onPressed: {},
                                     ),
                                     SizedBox(width: 20),
-                                    Icon(FontAwesomeIcons.twitter, color: Colors.red),
+                                    IconButton(
+                                      icon: Icon(FontAwesomeIcons.github, color: Colors.red),
+                                      //onPressed: {},
+                                    ),
+                                    SizedBox(width: 20),
+                                    IconButton(
+                                      icon: Icon(FontAwesomeIcons.twitter, color: Colors.red),
+                                      //onPressed: {},
+                                    ),
                                   ])
                                 ],
                               ),
