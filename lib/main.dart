@@ -156,7 +156,7 @@ class _HomePageState extends State<HomePage> {
                                   Row(mainAxisAlignment: MainAxisAlignment.center, children: [
                                     IconButton(
                                       icon: Icon(FontAwesomeIcons.facebook, color: Colors.red),
-                                      onPressed: () => launch('https://github.com/himanshusharma89'),
+                                      onPressed: {},
                                     ),
                                     SizedBox(width: 20),
                                     Icon(FontAwesomeIcons.linkedin, color: Colors.red),
