@@ -154,11 +154,17 @@ class _HomePageState extends State<HomePage> {
                                     height: 10,
                                   ),
                                   Row(mainAxisAlignment: MainAxisAlignment.center, children: [
-                                    IconButton(icon: Icon(FontAwesomeIcons.facebook, color: Colors.red),onPressed: ()=>launch('https://github.com/himanshusharma89'),)
+                                    IconButton(
+                                      icon: Icon(FontAwesomeIcons.facebook, color: Colors.red),
+                                      onPressed: () => launch('https://github.com/himanshusharma89'),
+                                    ),
                                     SizedBox(width: 20),
                                     Icon(FontAwesomeIcons.linkedin, color: Colors.red),
                                     SizedBox(width: 20),
-                                    Icon(FontAwesomeIcons.github, color: Colors.red,),
+                                    Icon(
+                                      FontAwesomeIcons.github,
+                                      color: Colors.red,
+                                    ),
                                     SizedBox(width: 20),
                                     Icon(FontAwesomeIcons.twitter, color: Colors.red),
                                   ])
