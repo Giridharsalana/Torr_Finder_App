@@ -158,7 +158,7 @@ class _HomePageState extends State<HomePage> {
                                     SizedBox(width: 20),
                                     Icon(FontAwesomeIcons.linkedin, color: Colors.red),
                                     SizedBox(width: 20),
-                                    Icon(FontAwesomeIcons.twitter, color: Colors.red),
+                                    Icon(FontAwesomeIcons.github, color: Colors.red),
                                     SizedBox(width: 20),
                                     Icon(FontAwesomeIcons.twitter, color: Colors.red),
                                   ])
