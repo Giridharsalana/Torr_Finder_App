@@ -150,7 +150,7 @@ class _HomePageState extends State<HomePage> {
                                       fontSize: 20.0,
                                     ),
                                   ),
-                                  Row(mainAxisAlignment: MainAxisAlignment.start, children: [
+                                  Row(mainAxisAlignment: MainAxisAlignment.center, children: [
                                     Icon(Icons.home, color: Colors.red),
                                     Icon(Icons.home, color: Colors.red),
                                     Icon(Icons.home, color: Colors.red),
