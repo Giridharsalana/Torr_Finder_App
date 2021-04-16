@@ -3,6 +3,7 @@ import 'package:dio/dio.dart';
 import 'package:flutter/services.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 void main() => runApp(MyApp());
 
@@ -155,9 +156,15 @@ class _HomePageState extends State<HomePage> {
                                   ),
                                   Row(mainAxisAlignment: MainAxisAlignment.center, children: [
                                     IconButton(
-                                      icon: Icon(FontAwesomeIcons.facebook, color: Colors.red),
-                                      //onPressed: {},
-                                    ),
+                                        icon: Icon(FontAwesomeIcons.facebook, color: Colors.red),
+                                        onPressed: () async {
+                                          const url = 'https://github.com/himanshusharma89';
+                                          if (await canLaunch(url)) {
+                                            await launch(url);
+                                          } else {
+                                            throw 'Could not launch $url';
+                                          }
+                                        }),
                                     SizedBox(width: 20),
                                     IconButton(
                                       icon: Icon(FontAwesomeIcons.linkedin, color: Colors.red),
