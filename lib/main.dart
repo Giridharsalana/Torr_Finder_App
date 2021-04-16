@@ -153,9 +153,11 @@ class _HomePageState extends State<HomePage> {
                                   SizedBox(
                                     height: 10,
                                   ),
-                                  Row(mainAxisAlignment: MainAxisAlignment.spaceEvenly, children: [
+                                  Row(mainAxisAlignment: MainAxisAlignment.center, children: [
                                     Icon(FontAwesomeIcons.home, color: Colors.red),
+                                    SizedBox(width: 20),
                                     Icon(FontAwesomeIcons.home, color: Colors.red),
+                                    SizedBox(width: 20),
                                     Icon(FontAwesomeIcons.home, color: Colors.red),
                                   ])
                                 ],
