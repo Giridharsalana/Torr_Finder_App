@@ -151,9 +151,9 @@ class _HomePageState extends State<HomePage> {
                                     ),
                                   ),
                                   Row(mainAxisAlignment: MainAxisAlignment.start, children: [
-                                    Icon(Icons.home),
-                                    Icon(Icons.home),
-                                    Icon(Icons.home),
+                                    Icon(Icons.home, color: Colors.red),
+                                    Icon(Icons.home, color: Colors.red),
+                                    Icon(Icons.home, color: Colors.red),
                                   ])
                                 ],
                               ),
