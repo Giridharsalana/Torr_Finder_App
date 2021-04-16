@@ -191,7 +191,7 @@ class _HomePageState extends State<HomePage> {
                                     IconButton(
                                         icon: Icon(FontAwesomeIcons.twitter, color: Colors.red),
                                         onPressed: () async {
-                                          const tgiurl = 'https://www.twitter.com/GiridharSalana3';
+                                          const tiurl = 'https://www.twitter.com/GiridharSalana3';
                                           if (await canLaunch(tiurl)) {
                                             await launch(tiurl);
                                           } else {
