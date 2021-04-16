@@ -158,28 +158,46 @@ class _HomePageState extends State<HomePage> {
                                     IconButton(
                                         icon: Icon(FontAwesomeIcons.facebook, color: Colors.red),
                                         onPressed: () async {
-                                          const url = 'https://github.com/himanshusharma89';
-                                          if (await canLaunch(url)) {
-                                            await launch(url);
+                                          const fburl = 'https://www.facebook.com/GiridharSalana';
+                                          if (await canLaunch(fburl)) {
+                                            await launch(fburl);
                                           } else {
-                                            throw 'Could not launch $url';
+                                            throw 'Could not launch $fburl';
                                           }
                                         }),
                                     SizedBox(width: 20),
                                     IconButton(
-                                      icon: Icon(FontAwesomeIcons.linkedin, color: Colors.red),
-                                      //onPressed: {},
-                                    ),
+                                        icon: Icon(FontAwesomeIcons.linkedin, color: Colors.red),
+                                        onPressed: () async {
+                                          const liurl = 'https://www.linkedin.com/in/Giridhar-Salana';
+                                          if (await canLaunch(liurl)) {
+                                            await launch(liurl);
+                                          } else {
+                                            throw 'Could not launch $liurl';
+                                          }
+                                        }),
                                     SizedBox(width: 20),
                                     IconButton(
-                                      icon: Icon(FontAwesomeIcons.github, color: Colors.red),
-                                      //onPressed: {},
-                                    ),
+                                        icon: Icon(FontAwesomeIcons.github, color: Colors.red),
+                                        onPressed: () async {
+                                          const giurl = 'https://github.com/Giridharsalana';
+                                          if (await canLaunch(giurl)) {
+                                            await launch(giurl);
+                                          } else {
+                                            throw 'Could not launch $giurl';
+                                          }
+                                        }),
                                     SizedBox(width: 20),
                                     IconButton(
-                                      icon: Icon(FontAwesomeIcons.twitter, color: Colors.red),
-                                      //onPressed: {},
-                                    ),
+                                        icon: Icon(FontAwesomeIcons.twitter, color: Colors.red),
+                                        onPressed: () async {
+                                          const tgiurl = 'https://www.twitter.com/GiridharSalana3';
+                                          if (await canLaunch(tiurl)) {
+                                            await launch(tiurl);
+                                          } else {
+                                            throw 'Could not launch $tiurl';
+                                          }
+                                        }),
                                   ])
                                 ],
                               ),
