@@ -154,9 +154,9 @@ class _HomePageState extends State<HomePage> {
                                     height: 10,
                                   ),
                                   Row(mainAxisAlignment: MainAxisAlignment.center, children: [
-                                    Icon(FontAwesomeIcons.home, color: Colors.red),
+                                    Icon(FontAwesomeIcons.facebook, color: Colors.red),
                                     SizedBox(width: 20),
-                                    Icon(FontAwesomeIcons.home, color: Colors.red),
+                                    Icon(FontAwesomeIcons.linkedin, color: Colors.red),
                                     SizedBox(width: 20),
                                     Icon(FontAwesomeIcons.home, color: Colors.red),
                                   ])
