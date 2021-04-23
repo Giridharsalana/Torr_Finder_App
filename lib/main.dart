@@ -56,7 +56,7 @@ class MyApp extends StatelessWidget {
           ],
         ),
       ),
-    ),
+    );
       theme: ThemeData(
         scaffoldBackgroundColor: Color(0xFF26166b),
         visualDensity: VisualDensity.adaptivePlatformDensity,
