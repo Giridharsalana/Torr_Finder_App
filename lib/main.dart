@@ -14,49 +14,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'Tor Finder',
-      //home: HomePage(),
-      home: OfflineBuilder(
-        connectivityBuilder: (
-          BuildContext context,
-          ConnectivityResult connectivity,
-          Widget child,
-        ) {
-          final bool connected = connectivity != ConnectivityResult.none;
-          return new Stack(
-            fit: StackFit.expand,
-            children: [
-              Positioned(
-                height: 24.0,
-                left: 0.0,
-                right: 0.0,
-                child: Container(
-                  color: connected ? Color(0xFF00EE44) : Color(0xFFEE4400),
-                  child: Center(
-                    child: Text("${connected ? 'ONLINE' : 'OFFLINE'}"),
-                  ),
-                ),
-              ),
-              Center(
-                child: new Text(
-                  'Yay!',
-                ),
-              ),
-            ],
-          );
-        },
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
-            new Text(
-              'There are no bottons to push :)',
-            ),
-            new Text(
-              'Just turn off your internet.',
-            ),
-          ],
-        ),
-      ),
-    );
+      home: HomePage(),
       theme: ThemeData(
         scaffoldBackgroundColor: Color(0xFF26166b),
         visualDensity: VisualDensity.adaptivePlatformDensity,
