@@ -27,7 +27,8 @@ class HomePage extends StatefulWidget {
   final dio = Dio(BaseOptions(
     baseUrl: 'https://torr-finder-api.herokuapp.com/search',
     headers: {
-      //'Accept': 'application/json',
+      "Accept": "application/json",
+      "Access-Control_Allow_Origin": "*"
     },
   ));
 
@@ -57,6 +58,7 @@ class _HomePageState extends State<HomePage> {
         _tors = null;
       } else {
         _tors = response.data['results'];
+        print(_tors);
       }
       _ishome = false;
       _issearch = false;
