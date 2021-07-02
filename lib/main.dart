@@ -56,8 +56,10 @@ class _HomePageState extends State<HomePage> {
       });
     } catch (e) {
       print(e);
-      response.statucode = 500;
     }
+    final response = await widget.dio.get('', queryParameters: {
+      'query': query,
+    });
 
     setState(() {
       if (response.statusCode != 200 || response.data == 'Error') {
