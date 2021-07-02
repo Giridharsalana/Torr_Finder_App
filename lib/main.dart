@@ -50,14 +50,8 @@ class _HomePageState extends State<HomePage> {
     setState(() {
       _issearch = true;
     });
-    try {
     final response = await dio.get('', queryParameters: {
-        'query': query,
-      });
-    print(response.data['results']);
-  } catch (e) {
-    print(e);
-  }
+        'query': query,});
 
     setState(() {
       if (response.statusCode != 200 || response.data == 'Error') {
