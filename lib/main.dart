@@ -50,17 +50,18 @@ class _HomePageState extends State<HomePage> {
     setState(() {
       _issearch = true;
     });
-    print("came ger");
-    final response = await widget.dio.get('', queryParameters: {
-      'query': query,
-    });
+    try {
+      final response = await widget.dio.get('', queryParameters: {
+        'query': query,
+      });
+    } catch (e) {
+      print(e);
+    }
     setState(() {
       if (response.statusCode != 200 || response.data == 'Error') {
         _tors = null;
       } else {
         _tors = response.data['results'];
-        print('here');
-        log('your message here');
       }
       _ishome = false;
       _issearch = false;
