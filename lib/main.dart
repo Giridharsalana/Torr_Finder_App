@@ -56,7 +56,7 @@ class _HomePageState extends State<HomePage> {
       if (response.statusCode != 200 || response.data == 'Error') {
         _tors = null;
       } else {
-        _tors = response.data;
+        _tors = response.data['results'];
       }
       _ishome = false;
       setState(() {
