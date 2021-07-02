@@ -58,8 +58,8 @@ class _HomePageState extends State<HomePage> {
       } else {
         _tors = response.data['results'];
       }
-      _ishome = false;
       setState(() {
+        _ishome = false;
         _issearch = false;
       });
     });
