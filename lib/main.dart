@@ -50,7 +50,7 @@ class _HomePageState extends State<HomePage> {
     setState(() {
       _issearch = true;
     });
-    print("came ger")
+    print("came ger");
     final response = await widget.dio.get('', queryParameters: {
       'query': query,
     });
