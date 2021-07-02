@@ -57,6 +57,7 @@ class _HomePageState extends State<HomePage> {
         _tors = null;
       } else {
         _tors = response.data['results'];
+        print('here');
       }
       _ishome = false;
       _issearch = false;
