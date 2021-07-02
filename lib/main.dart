@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:dio/dio.dart';
 import 'package:flutter/services.dart';
 import 'package:fluttertoast/fluttertoast.dart';
+import 'dart:developer';
 
 void main() => runApp(MyApp());
 
@@ -58,6 +59,7 @@ class _HomePageState extends State<HomePage> {
       } else {
         _tors = response.data['results'];
         print('here');
+        log('your message here');
       }
       _ishome = false;
       _issearch = false;
