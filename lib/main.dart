@@ -51,15 +51,13 @@ class _HomePageState extends State<HomePage> {
       _issearch = true;
     });
     try {
-      final response = await widget.dio.get('', queryParameters: {
+    final response = await dio.get('', queryParameters: {
         'query': query,
       });
-    } catch (e) {
-      print(e);
-    }
-    final response = await widget.dio.get('', queryParameters: {
-      'query': query,
-    });
+    print(response.data['results']);
+  } catch (e) {
+    print(e);
+  }
 
     setState(() {
       if (response.statusCode != 200 || response.data == 'Error') {
