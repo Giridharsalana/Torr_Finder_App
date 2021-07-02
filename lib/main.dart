@@ -28,7 +28,7 @@ class HomePage extends StatefulWidget {
     baseUrl: 'https://torr-finder-api.herokuapp.com/search',
     headers: {
       "Accept": "application/json",
-      "Access-Control_Allow_Origin": "*"
+      "Access-Control-Allow-Origin": "*"
     },
   ));
 
@@ -51,7 +51,9 @@ class _HomePageState extends State<HomePage> {
     setState(() {
       _issearch = true;
     });
-    final response = await widget.dio.get('', queryParameters: {'query': query,});
+    final response = await widget.dio.get('', queryParameters: {
+      'query': query,
+    });
 
     setState(() {
       if (response.statusCode != 200 || response.data == 'Error') {
