@@ -25,7 +25,7 @@ class HomePage extends StatefulWidget {
   HomePage({Key key, this.title}) : super(key: key);
   final String title;
   final dio = Dio(BaseOptions(
-    baseUrl: 'https://torr-finder-api.herokuapp.com/search/',
+    baseUrl: 'https://torr-finder-api.herokuapp.com/search',
     headers: {
       //'Accept': 'application/json',
     },
