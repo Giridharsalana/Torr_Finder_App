@@ -24,7 +24,7 @@ class HomePage extends StatefulWidget {
   HomePage({Key key, this.title}) : super(key: key);
   final String title;
   final dio = Dio(BaseOptions(
-    baseUrl: 'https://api.sumanjay.cf/torrent',
+    baseUrl: 'https://torr-finder-api.herokuapp.com/search',
     headers: {
       //'Accept': 'application/json',
     },
@@ -247,7 +247,7 @@ class _HomePageState extends State<HomePage> {
                               children: _tors.map((tor) {
                                 return ListTile(
                                     title: Text(
-                                      tor['name'],
+                                      tor['title'],
                                       style: TextStyle(
                                         color: Colors.white,
                                         fontWeight: FontWeight.bold,
