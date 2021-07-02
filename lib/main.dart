@@ -55,6 +55,14 @@ class _HomePageState extends State<HomePage> {
       'query': query,
     });
 
+    try {
+      final responsez = await widget.dio.get('', queryParameters: {
+        'query': query,
+      });
+    } catch (e) {
+      print(e);
+    }
+
     setState(() {
       if (response.statusCode != 200 || response.data == 'Error') {
         _tors = null;
