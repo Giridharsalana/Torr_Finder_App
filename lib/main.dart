@@ -244,7 +244,7 @@ class _HomePageState extends State<HomePage> {
                           )
                         : Expanded(
                             child: ListView(
-                              children: _tors.map((tor) {
+                              children: _tors['results'].map((tor) {
                                 return ListTile(
                                     title: Text(
                                       tor['title'],
