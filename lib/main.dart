@@ -228,7 +228,7 @@ class _HomePageState extends State<HomePage> {
                                   size: 110,
                                 ),
                                 Text(
-                                  'Search Your Torrents Here!\nGiri',
+                                  'Search Your Torrents Here!',
                                   style: TextStyle(
                                     color: Colors.white,
                                     fontSize: 20,
@@ -237,7 +237,24 @@ class _HomePageState extends State<HomePage> {
                                 ),
                                 SizedBox(
                                   height: 20,
-                                )
+                                ),
+                                Text(
+                                  '*** Disclaimer ***',
+                                  style: TextStyle(
+                                    color: Colors.red,
+                                    fontSize: 18,
+                                    fontWeight: FontWeight.bold,
+                                  ),
+                                ),
+                                Text(
+                                  'I am not creating any links \n and \n only gathering publically available links, \n so i am not responsible for any of the content.',
+                                    textAlign: TextAlign.center,
+                                  style: TextStyle(
+                                    color: Colors.red,
+                                    fontSize: 15,
+                                    fontWeight: FontWeight.bold,
+                                  ),
+                                ),
                                 /*Text(
                                   'Made With Love By Giridhar Salana',
                                   style: TextStyle(
@@ -261,7 +278,7 @@ class _HomePageState extends State<HomePage> {
                                       ),
                                     ),
                                     subtitle: Text(
-                                      '${tor['seeder']} seeders ' ' ${tor['leecher']} leechers ' ' ${tor['site']} ' ' ${tor['age']} ',
+                                      '${tor['swarm']['seeders']} seeders ' ' ${tor['swarm']['leechers']} leechers ' ' Added on ${tor['imported']} ',
                                       style: TextStyle(color: Colors.white),
                                     ),
                                     trailing: Text(
