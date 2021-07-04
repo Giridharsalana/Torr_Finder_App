@@ -1,4 +1,4 @@
-name: torfinder
+name: torrfinder
 description: Torrent Search Engine.
 
 version: 1.0.0+1
@@ -21,7 +21,7 @@ dev_dependencies:
     sdk: flutter
   
 flutter_icons:
-  android: "launcher_icon"
+  android: "ic_launcher"
   ios: true
   image_path: "assets/icon/icon.png"
 
@@ -33,4 +33,3 @@ flutter:
     - family: Pacifico
       fonts:
         - asset: assets/fonts/Pacifico-Regular.ttf
-

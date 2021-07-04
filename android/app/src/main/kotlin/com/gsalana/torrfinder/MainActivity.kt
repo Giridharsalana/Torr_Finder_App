@@ -1,4 +1,4 @@
-package com.gsalana.torfinder
+package com.gsalana.torrfinder
 
 import androidx.annotation.NonNull;
 import io.flutter.embedding.android.FlutterActivity

@@ -11,9 +11,9 @@
 	<key>CFBundleInfoDictionaryVersion</key>
 	<string>6.0</string>
 	<key>CFBundleName</key>
-	<string>torfinder</string>
+	<string>torrfinder</string>
 <key>CFBundleDisplayName</key>
-<string>Tor Finder</string>
+<string>Torr_Finder</string>
 	<key>CFBundlePackageType</key>
 	<string>APPL</string>
 	<key>CFBundleShortVersionString</key>
