@@ -57,15 +57,14 @@ class _HomePageState extends State<HomePage> {
       print(e);
     }
     final response = await widget.dio.get('', queryParameters: {
-        'query': query,
-      });
+      'query': query,
+    });
 
     setState(() {
       if (response.statusCode != 200 || response.data == 'Error') {
         _tors = null;
       } else {
         _tors = response.data['results'];
-        print(_tors);
       }
       _ishome = false;
       _issearch = false;
@@ -248,7 +247,7 @@ class _HomePageState extends State<HomePage> {
                                 ),
                                 Text(
                                   'I am not creating any links \n and \n only gathering publically available links, \n so i am not responsible for any of the content.',
-                                    textAlign: TextAlign.center,
+                                  textAlign: TextAlign.center,
                                   style: TextStyle(
                                     color: Colors.red,
                                     fontSize: 15,
