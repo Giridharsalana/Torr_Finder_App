@@ -2,6 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:dio/dio.dart';
 import 'package:flutter/services.dart';
 import 'package:fluttertoast/fluttertoast.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:url_launcher/url_launcher.dart';
+import 'package:flutter_offline/flutter_offline.dart';
 
 void main() => runApp(MyApp());
 
@@ -125,7 +128,7 @@ class _HomePageState extends State<HomePage> {
                           child: Container(
                             height: 350,
                             child: Padding(
-                              padding: const EdgeInsets.all(12.0),
+                              padding: const EdgeInsets.all(10.0),
                               child: Column(
                                 mainAxisAlignment: MainAxisAlignment.start,
                                 crossAxisAlignment: CrossAxisAlignment.center,
@@ -155,6 +158,54 @@ class _HomePageState extends State<HomePage> {
                                       fontSize: 20.0,
                                     ),
                                   ),
+                                  SizedBox(
+                                    height: 10,
+                                  ),
+                                  Row(mainAxisAlignment: MainAxisAlignment.center, children: [
+                                    IconButton(
+                                        icon: Icon(FontAwesomeIcons.facebook, color: Colors.red),
+                                        onPressed: () async {
+                                          const fburl = 'https://www.facebook.com/GiridharSalana';
+                                          if (await canLaunch(fburl)) {
+                                            await launch(fburl);
+                                          } else {
+                                            throw 'Could not launch $fburl';
+                                          }
+                                        }),
+                                    SizedBox(width: 20),
+                                    IconButton(
+                                        icon: Icon(FontAwesomeIcons.linkedin, color: Colors.red),
+                                        onPressed: () async {
+                                          const liurl = 'https://www.linkedin.com/in/Giridhar-Salana';
+                                          if (await canLaunch(liurl)) {
+                                            await launch(liurl);
+                                          } else {
+                                            throw 'Could not launch $liurl';
+                                          }
+                                        }),
+                                    SizedBox(width: 20),
+                                    IconButton(
+                                        icon: Icon(FontAwesomeIcons.github, color: Colors.red),
+                                        onPressed: () async {
+                                          const giurl = 'https://github.com/Giridharsalana';
+                                          if (await canLaunch(giurl)) {
+                                            await launch(giurl);
+                                          } else {
+                                            throw 'Could not launch $giurl';
+                                          }
+                                        }),
+                                    SizedBox(width: 20),
+                                    IconButton(
+                                        icon: Icon(FontAwesomeIcons.twitter, color: Colors.red),
+                                        onPressed: () async {
+                                          const tiurl = 'https://www.twitter.com/GiridharSalana3';
+                                          if (await canLaunch(tiurl)) {
+                                            await launch(tiurl);
+                                          } else {
+                                            throw 'Could not launch $tiurl';
+                                          }
+                                        }),
+                                  ])
                                 ],
                               ),
                             ),
