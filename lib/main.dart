@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:dio/dio.dart';
 import 'package:flutter/services.dart';
 import 'package:fluttertoast/fluttertoast.dart';
+import 'dart:developer';
 
 void main() => runApp(MyApp());
 
@@ -24,9 +25,10 @@ class HomePage extends StatefulWidget {
   HomePage({Key key, this.title}) : super(key: key);
   final String title;
   final dio = Dio(BaseOptions(
-    baseUrl: 'https://api.sumanjay.cf/torrent',
+    baseUrl: 'https://torr-finder-api.herokuapp.com/search',
     headers: {
-      //'Accept': 'application/json',
+      "Accept": "application/json",
+      "Access-Control-Allow-Origin": "*"
     },
   ));
 
@@ -49,19 +51,28 @@ class _HomePageState extends State<HomePage> {
     setState(() {
       _issearch = true;
     });
+    print('searching');
+    try {
+      final response = await widget.dio.get('', queryParameters: {
+        'query': query,
+      });
+    } catch (e) {
+      print(e);
+    }
+
     final response = await widget.dio.get('', queryParameters: {
       'query': query,
     });
+
     setState(() {
       if (response.statusCode != 200 || response.data == 'Error') {
         _tors = null;
       } else {
-        _tors = response.data;
+        _tors = response.data['results'];
+        print(_tors);
       }
       _ishome = false;
-      setState(() {
-        _issearch = false;
-      });
+      _issearch = false;
     });
   }
 
@@ -247,7 +258,7 @@ class _HomePageState extends State<HomePage> {
                               children: _tors.map((tor) {
                                 return ListTile(
                                     title: Text(
-                                      tor['name'],
+                                      tor['title'],
                                       style: TextStyle(
                                         color: Colors.white,
                                         fontWeight: FontWeight.bold,
