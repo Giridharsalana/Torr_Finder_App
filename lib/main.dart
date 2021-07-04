@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:dio/dio.dart';
 import 'package:flutter/services.dart';
 import 'package:fluttertoast/fluttertoast.dart';
-import 'dart:developer';
 
 void main() => runApp(MyApp());
 
@@ -11,7 +10,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      title: 'Tor Finder',
+      title: 'Torr Finder',
       home: HomePage(),
       theme: ThemeData(
         scaffoldBackgroundColor: Color(0xFF26166b),
@@ -56,10 +55,10 @@ class _HomePageState extends State<HomePage> {
       });
     } catch (e) {
       print(e);
-      final response = await widget.dio.get('', queryParameters: {
+    }
+    final response = await widget.dio.get('', queryParameters: {
         'query': query,
       });
-    }
 
     setState(() {
       if (response.statusCode != 200 || response.data == 'Error') {
