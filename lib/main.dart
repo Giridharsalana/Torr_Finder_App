@@ -127,6 +127,7 @@ class _HomePageState extends State<HomePage> {
                           shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20.0)), //this right here
                           child: Container(
                             height: 350,
+                            width: 280,
                             child: Padding(
                               padding: const EdgeInsets.all(10.0),
                               child: Column(
