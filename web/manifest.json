@@ -1,11 +1,11 @@
 {
-    "name": "flutter_web_app",
-    "short_name": "flutter_web_app",
+    "name": "Torr Finder",
+    "short_name": "Torr Finder",
     "start_url": ".",
     "display": "minimal-ui",
     "background_color": "#0175C2",
     "theme_color": "#0175C2",
-    "description": "A new Flutter project.",
+    "description": "Torrent Search Engine",
     "orientation": "portrait-primary",
     "prefer_related_applications": false,
     "icons": [

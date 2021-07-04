@@ -102,7 +102,7 @@ class _HomePageState extends State<HomePage> {
     return Scaffold(
       appBar: AppBar(
           title: Text(
-            'Tor Finder',
+            'Torr Finder',
             style: TextStyle(fontFamily: 'Pacifico'),
           ),
           leading: Builder(builder: (BuildContext context) {
@@ -228,7 +228,7 @@ class _HomePageState extends State<HomePage> {
                                   size: 110,
                                 ),
                                 Text(
-                                  'Search Your Torrents Here!',
+                                  'Search Your Torrents Here!\nGiri',
                                   style: TextStyle(
                                     color: Colors.white,
                                     fontSize: 20,
