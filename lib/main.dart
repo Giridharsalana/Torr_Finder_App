@@ -28,7 +28,6 @@ class HomePage extends StatefulWidget {
     baseUrl: 'https://torr-finder-api.herokuapp.com/search',
     headers: {
       "Accept": "application/json",
-      "Access-Control-Allow-Origin": "*"
     },
   ));
 
