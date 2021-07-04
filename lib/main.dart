@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:dio/dio.dart';
 import 'package:flutter/services.dart';
 import 'package:fluttertoast/fluttertoast.dart';
-import 'dart:developer';
 
 void main() => runApp(MyApp());
 
@@ -11,7 +10,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      title: 'Tor Finder',
+      title: 'Torr Finder',
       home: HomePage(),
       theme: ThemeData(
         scaffoldBackgroundColor: Color(0xFF26166b),
@@ -56,10 +55,10 @@ class _HomePageState extends State<HomePage> {
       });
     } catch (e) {
       print(e);
-      final response = await widget.dio.get('', queryParameters: {
+    }
+    final response = await widget.dio.get('', queryParameters: {
         'query': query,
       });
-    }
 
     setState(() {
       if (response.statusCode != 200 || response.data == 'Error') {
@@ -103,7 +102,7 @@ class _HomePageState extends State<HomePage> {
     return Scaffold(
       appBar: AppBar(
           title: Text(
-            'Tor Finder',
+            'Torr Finder',
             style: TextStyle(fontFamily: 'Pacifico'),
           ),
           leading: Builder(builder: (BuildContext context) {
@@ -238,7 +237,24 @@ class _HomePageState extends State<HomePage> {
                                 ),
                                 SizedBox(
                                   height: 20,
-                                )
+                                ),
+                                Text(
+                                  '*** Disclaimer ***',
+                                  style: TextStyle(
+                                    color: Colors.red,
+                                    fontSize: 18,
+                                    fontWeight: FontWeight.bold,
+                                  ),
+                                ),
+                                Text(
+                                  'I am not creating any links \n and \n only gathering publically available links, \n so i am not responsible for any of the content.',
+                                    textAlign: TextAlign.center,
+                                  style: TextStyle(
+                                    color: Colors.red,
+                                    fontSize: 15,
+                                    fontWeight: FontWeight.bold,
+                                  ),
+                                ),
                                 /*Text(
                                   'Made With Love By Giridhar Salana',
                                   style: TextStyle(
@@ -262,7 +278,7 @@ class _HomePageState extends State<HomePage> {
                                       ),
                                     ),
                                     subtitle: Text(
-                                      '${tor['seeder']} seeders ' ' ${tor['leecher']} leechers ' ' ${tor['site']} ' ' ${tor['age']} ',
+                                      '${tor['swarm']['seeders']} seeders ' ' ${tor['swarm']['leechers']} leechers ' ' Added on ${tor['imported']} ',
                                       style: TextStyle(color: Colors.white),
                                     ),
                                     trailing: Text(
