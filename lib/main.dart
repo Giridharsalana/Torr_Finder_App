@@ -1,112 +1,62 @@
 import 'package:flutter/material.dart';
-import 'package:dio/dio.dart';
-import 'package:flutter/services.dart';
-import 'package:fluttertoast/fluttertoast.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:url_launcher/url_launcher.dart';
-import 'package:flutter_offline/flutter_offline.dart';
 
-void main() => runApp(MyApp());
+void main() {
+  runApp(const MyApp());
+}
 
+final controller = TextEditingController();
+var query = "";
+
+// This widget is the root of your application.
 class MyApp extends StatelessWidget {
+  const MyApp({Key? key}) : super(key: key);
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      debugShowCheckedModeBanner: false,
       title: 'Torr Finder',
-      home: HomePage(),
       theme: ThemeData(
         scaffoldBackgroundColor: Color(0xFF26166b),
         visualDensity: VisualDensity.adaptivePlatformDensity,
       ),
+      debugShowCheckedModeBanner: false,
+      home: const MyHomePage(title: 'Torr Finder'),
     );
   }
 }
 
-class HomePage extends StatefulWidget {
-  HomePage({Key? key, this.title}) : super(key: key);
+// Main Homepage Widget
+class MyHomePage extends StatefulWidget {
+  const MyHomePage({Key? key, required this.title}) : super(key: key);
+
   final String title;
-  final dio = Dio(BaseOptions(
-    baseUrl: 'https://torr-finder-api.herokuapp.com/search',
-    headers: {
-      "Accept": "application/json",
-    },
-  ));
 
   @override
-  _HomePageState createState() => _HomePageState();
+  State<MyHomePage> createState() => _MyHomePageState();
 }
 
-class _HomePageState extends State<HomePage> {
-  @override
-  bool _ishome;
-  bool _issearch = false;
-  void initState() {
-    _ishome = true;
-    _tors = null;
-  }
-
-  List _tors;
-
-  void searchTorrents(String query) async {
-    setState(() {
-      _issearch = true;
-    });
-    try {
-      final response = await widget.dio.get('', queryParameters: {
-        'query': query,
-      });
-    } catch (e) {
-      print(e);
-    }
-    final response = await widget.dio.get('', queryParameters: {
-      'query': query,
-    });
-
-    setState(() {
-      if (response.statusCode != 200 || response.data == 'Error') {
-        _tors = null;
-      } else {
-        _tors = response.data['results'];
-      }
-      _ishome = false;
-      _issearch = false;
-    });
-  }
-
+class _MyHomePageState extends State<MyHomePage> {
   void homeset() {
     setState(() {
-      _tors = null;
-      _ishome = true;
-      _issearch = false;
+      query = '';
+      controller.clear();
     });
   }
 
-  void _showToast() {
-    Fluttertoast.showToast(
-      msg: "Magnet Copied!",
-      toastLength: Toast.LENGTH_SHORT,
-      //gravity: ToastGravity.CENTER,
-      timeInSecForIosWeb: 1,
-      backgroundColor: Colors.black,
-      textColor: Colors.red,
-      fontSize: 16.0,
-    );
+  void UpdateState() {
+    setState(() {});
   }
 
-  // This function is triggered when the copy icon is pressed
-  void _copyToClipboard(textcp) async {
-    await Clipboard.setData(ClipboardData(text: textcp));
-    _showToast();
-  }
-
+  @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-          title: Text(
-            'Torr Finder',
-            style: TextStyle(fontFamily: 'Pacifico'),
-          ),
+        appBar: AppBar(
+          title: Text(widget.title, style: TextStyle(fontFamily: 'Pacifico')),
+          elevation: 0,
+          backgroundColor: Color(0xFF26166b),
+          centerTitle: true,
           leading: Builder(builder: (BuildContext context) {
             return IconButton(
               icon: const Icon(Icons.home),
@@ -124,7 +74,9 @@ class _HomePageState extends State<HomePage> {
                       context: context,
                       builder: (BuildContext context) {
                         return Dialog(
-                          shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20.0)), //this right here
+                          shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(
+                                  20.0)), //this right here
                           child: Container(
                             height: 350,
                             width: 280,
@@ -162,51 +114,64 @@ class _HomePageState extends State<HomePage> {
                                   SizedBox(
                                     height: 10,
                                   ),
-                                  Row(mainAxisAlignment: MainAxisAlignment.center, children: [
-                                    IconButton(
-                                        icon: Icon(FontAwesomeIcons.facebook, color: Colors.red),
-                                        onPressed: () async {
-                                          const fburl = 'https://www.facebook.com/GiridharSalana';
-                                          if (await canLaunch(fburl)) {
-                                            await launch(fburl);
-                                          } else {
-                                            throw 'Could not launch $fburl';
-                                          }
-                                        }),
-                                    SizedBox(width: 20),
-                                    IconButton(
-                                        icon: Icon(FontAwesomeIcons.linkedin, color: Colors.red),
-                                        onPressed: () async {
-                                          const liurl = 'https://www.linkedin.com/in/Giridhar-Salana';
-                                          if (await canLaunch(liurl)) {
-                                            await launch(liurl);
-                                          } else {
-                                            throw 'Could not launch $liurl';
-                                          }
-                                        }),
-                                    SizedBox(width: 20),
-                                    IconButton(
-                                        icon: Icon(FontAwesomeIcons.github, color: Colors.red),
-                                        onPressed: () async {
-                                          const giurl = 'https://github.com/Giridharsalana';
-                                          if (await canLaunch(giurl)) {
-                                            await launch(giurl);
-                                          } else {
-                                            throw 'Could not launch $giurl';
-                                          }
-                                        }),
-                                    SizedBox(width: 20),
-                                    IconButton(
-                                        icon: Icon(FontAwesomeIcons.twitter, color: Colors.red),
-                                        onPressed: () async {
-                                          const tiurl = 'https://www.twitter.com/GiridharSalana3';
-                                          if (await canLaunch(tiurl)) {
-                                            await launch(tiurl);
-                                          } else {
-                                            throw 'Could not launch $tiurl';
-                                          }
-                                        }),
-                                  ])
+                                  Row(
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.center,
+                                      children: [
+                                        IconButton(
+                                            icon: Icon(
+                                                FontAwesomeIcons.facebook,
+                                                color: Colors.red),
+                                            onPressed: () async {
+                                              const fburl =
+                                                  'https://www.facebook.com/GiridharSalana';
+                                              if (await canLaunch(fburl)) {
+                                                await launch(fburl);
+                                              } else {
+                                                throw 'Could not launch $fburl';
+                                              }
+                                            }),
+                                        SizedBox(width: 20),
+                                        IconButton(
+                                            icon: Icon(
+                                                FontAwesomeIcons.linkedin,
+                                                color: Colors.red),
+                                            onPressed: () async {
+                                              const liurl =
+                                                  'https://www.linkedin.com/in/Giridhar-Salana';
+                                              if (await canLaunch(liurl)) {
+                                                await launch(liurl);
+                                              } else {
+                                                throw 'Could not launch $liurl';
+                                              }
+                                            }),
+                                        SizedBox(width: 20),
+                                        IconButton(
+                                            icon: Icon(FontAwesomeIcons.github,
+                                                color: Colors.red),
+                                            onPressed: () async {
+                                              const giurl =
+                                                  'https://github.com/Giridharsalana';
+                                              if (await canLaunch(giurl)) {
+                                                await launch(giurl);
+                                              } else {
+                                                throw 'Could not launch $giurl';
+                                              }
+                                            }),
+                                        SizedBox(width: 20),
+                                        IconButton(
+                                            icon: Icon(FontAwesomeIcons.twitter,
+                                                color: Colors.red),
+                                            onPressed: () async {
+                                              const tiurl =
+                                                  'https://www.twitter.com/GiridharSalana3';
+                                              if (await canLaunch(tiurl)) {
+                                                await launch(tiurl);
+                                              } else {
+                                                throw 'Could not launch $tiurl';
+                                              }
+                                            }),
+                                      ])
                                 ],
                               ),
                             ),
@@ -217,248 +182,122 @@ class _HomePageState extends State<HomePage> {
               );
             }),
           ],
-          elevation: 0,
-          backgroundColor: Color(0xFF26166b),
-          centerTitle: true),
-      body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.start,
-          crossAxisAlignment: CrossAxisAlignment.stretch,
-          children: <Widget>[
-            SearchForm(onSearch: searchTorrents),
-            _issearch == true
-                ? Expanded(
-                    child: Column(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        Icon(
-                          Icons.search,
-                          color: Colors.white,
-                          size: 110,
-                        ),
-                        Text(
-                          'Searching...',
-                          style: TextStyle(color: Colors.white),
-                        ),
-                        SizedBox(
-                          height: 30.0,
-                        ),
-                        CircularProgressIndicator()
-                      ],
-                    ),
-                  )
-                : _ishome == false && _tors == null && _issearch == false
-                    ? Expanded(
-                        child: Column(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: [
-                            Icon(
-                              Icons.search,
-                              color: Colors.white,
-                              size: 110,
-                            ),
-                            Text(
-                              'Found None!',
-                              style: TextStyle(
-                                color: Colors.white,
-                                fontSize: 20,
-                                fontWeight: FontWeight.bold,
-                              ),
-                            )
-                          ],
-                        ),
-                      )
-                    : _tors == null && _ishome == true && _issearch == false
-                        ? Expanded(
-                            child: Column(
-                              mainAxisAlignment: MainAxisAlignment.center,
-                              children: [
-                                Icon(
-                                  Icons.search,
-                                  color: Colors.white,
-                                  size: 110,
-                                ),
-                                Text(
-                                  'Search Your Torrents Here!',
-                                  style: TextStyle(
-                                    color: Colors.white,
-                                    fontSize: 20,
-                                    fontWeight: FontWeight.bold,
-                                  ),
-                                ),
-                                SizedBox(
-                                  height: 20,
-                                ),
-                                Text(
-                                  '*** Disclaimer ***',
-                                  style: TextStyle(
-                                    color: Colors.red,
-                                    fontSize: 18,
-                                    fontWeight: FontWeight.bold,
-                                  ),
-                                ),
-                                Text(
-                                  'I am not creating any links \n and \n only gathering publically available links, \n so i am not responsible for any of the content.',
-                                  textAlign: TextAlign.center,
-                                  style: TextStyle(
-                                    color: Colors.red,
-                                    fontSize: 15,
-                                    fontWeight: FontWeight.bold,
-                                  ),
-                                ),
-                                /*Text(
-                                  'Made With Love By Giridhar Salana',
-                                  style: TextStyle(
-                                    color: Colors.white,
-                                    fontSize: 20,
-                                    fontWeight: FontWeight.bold,
-                                  ),
-                                ),*/
-                              ],
-                            ),
-                          )
-                        : Expanded(
-                            child: ListView(
-                              children: _tors.map((tor) {
-                                return ListTile(
-                                    title: Text(
-                                      tor['title'],
-                                      style: TextStyle(
-                                        color: Colors.white,
-                                        fontWeight: FontWeight.bold,
-                                      ),
-                                    ),
-                                    subtitle: Text(
-                                      '${tor['swarm']['seeders']} seeders ' ' ${tor['swarm']['leechers']} leechers ' ' Added on ${tor['imported']} ',
-                                      style: TextStyle(color: Colors.white),
-                                    ),
-                                    trailing: Text(
-                                      tor['size'],
-                                      style: TextStyle(
-                                        color: Colors.white,
-                                      ),
-                                    ),
-                                    dense: true,
-                                    enabled: true,
-                                    selected: true,
-                                    onTap: () => _copyToClipboard(tor['magnet']));
-                              }).toList(),
-                            ),
-                          ),
-          ],
         ),
+        body: Column(children: [
+          Searchbar(onClick: UpdateState),
+          Resultsbar(),
+        ]));
+  }
+}
+
+// Searchbar Widget
+class Searchbar extends StatefulWidget {
+  const Searchbar({Key? key, required this.onClick}) : super(key: key);
+
+  final Function onClick;
+
+  @override
+  State<Searchbar> createState() => _Searchbar();
+}
+
+class _Searchbar extends State<Searchbar> {
+  @override
+  Widget build(BuildContext context) {
+    return Padding(
+      padding: const EdgeInsets.all(10),
+      child: Stack(
+        children: <Widget>[
+          Container(
+            decoration: BoxDecoration(
+              borderRadius: BorderRadius.all(Radius.circular(40)),
+              color: Colors.white,
+            ),
+            child: Row(
+              children: <Widget>[
+                Expanded(
+                  child: TextField(
+                    controller: controller,
+                    textInputAction: TextInputAction.search,
+                    decoration: InputDecoration(
+                      hintText: "Search Your Torrents!",
+                      focusedBorder: OutlineInputBorder(
+                          borderRadius: BorderRadius.circular(40.0),
+                          borderSide: BorderSide(color: Colors.white)),
+                      enabledBorder: OutlineInputBorder(
+                          borderRadius: BorderRadius.circular(40.0),
+                          borderSide: BorderSide(color: Colors.white)),
+                    ),
+                    onChanged: (value) {
+                      setState(() {
+                        query = controller.text;
+                        widget.onClick();
+                      });
+                    },
+                    onSubmitted: (value) {
+                      setState(() {
+                        query = controller.text;
+                        widget.onClick();
+                      });
+                    },
+                  ),
+                ),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.end,
+                  children: <Widget>[
+                    controller.text.isNotEmpty
+                        ? IconButton(
+                            padding: EdgeInsets.all(0),
+                            icon: Icon(
+                              Icons.clear,
+                              color: Colors.red,
+                            ),
+                            tooltip: "Clear",
+                            onPressed: () {
+                              query = '';
+                              controller.clear();
+                              widget.onClick();
+                            },
+                          )
+                        : SizedBox(),
+                    IconButton(
+                      padding: EdgeInsets.all(0),
+                      icon: Icon(
+                        Icons.search,
+                        color: Colors.green,
+                      ),
+                      tooltip: "Search",
+                      onPressed: () {
+                        setState(() {
+                          query = controller.text;
+                          widget.onClick();
+                        });
+                      },
+                    ),
+                  ],
+                ),
+              ],
+            ),
+          ),
+        ],
       ),
     );
   }
 }
 
-class SearchForm extends StatefulWidget {
-  SearchForm({this.onSearch});
-  final void Function(String search) onSearch;
+class Resultsbar extends StatefulWidget {
+  const Resultsbar({Key? key}) : super(key: key);
+
   @override
-  _SearchFormState createState() => _SearchFormState();
+  State<Resultsbar> createState() => _Resultsbar();
 }
 
-class _SearchFormState extends State<SearchForm> {
-  final _formKey = GlobalKey<FormState>();
-
-  var _autoValidate = false;
-  var _search;
-
-  void clearsearch() {
-    _formKey.currentState.reset();
-  }
-
+class _Resultsbar extends State<Resultsbar> {
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.all(10),
-      child: Form(
-        key: _formKey,
-        autovalidate: _autoValidate,
-        child: Stack(
-          children: <Widget>[
-            Container(
-              decoration: BoxDecoration(
-                //border: Border.all(color: Colors.blue),
-                borderRadius: BorderRadius.all(Radius.circular(40)),
-                color: Colors.white,
-              ),
-              child: Row(
-                children: <Widget>[
-                  Expanded(
-                      child: TextFormField(
-                    textInputAction: TextInputAction.search,
-                    decoration: InputDecoration(
-                      //prefixIcon: Icon(Icons.search),
-                      hintText: 'Enter search query',
-                      focusedBorder: OutlineInputBorder(borderRadius: BorderRadius.circular(40.0), borderSide: BorderSide(color: Colors.white)),
-                      //filled: true,
-                      //errorStyle: TextStyle(fontSize: 15),
-                      enabledBorder: OutlineInputBorder(borderRadius: BorderRadius.circular(40.0), borderSide: BorderSide(color: Colors.white)),
-                    ),
-                    onFieldSubmitted: (value) {
-                      final isValid = _formKey.currentState.validate();
-                      if (isValid) {
-                        widget.onSearch(_search);
-                      } else {
-                        setState(() {
-                          _autoValidate = true;
-                        });
-                      }
-                    },
-                    onChanged: (value) {
-                      _search = value;
-                    },
-                    validator: (value) {
-                      if (value.isEmpty) {
-                        return null; // Validator empty return 'Please enter a search term' replaced with null
-                      }
-                      return null;
-                    },
-                  )),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.end,
-                    children: <Widget>[
-                      MaterialButton(
-                        shape: CircleBorder(),
-                        //fillColor: Colors.red,
-                        padding: const EdgeInsets.only(right: 20.0),
-                        minWidth: 0,
-                        child: Icon(
-                          Icons.clear,
-                        ),
-                        onPressed: () {
-                          _formKey.currentState.reset();
-                        },
-                      ),
-                      MaterialButton(
-                        shape: CircleBorder(),
-                        padding: const EdgeInsets.only(right: 25.0),
-                        //fillColor: Colors.red,
-                        minWidth: 0,
-                        child: Icon(
-                          Icons.search,
-                        ),
-                        onPressed: () {
-                          final isValid = _formKey.currentState.validate();
-                          if (isValid) {
-                            widget.onSearch(_search);
-                          } else {
-                            setState(() {
-                              _autoValidate = true;
-                            });
-                          }
-                        },
-                      ),
-                    ],
-                  ),
-                ],
-              ),
-            ),
-          ],
-        ),
-      ),
+    return Text(
+      'Query \n $query',
+      textAlign: TextAlign.center,
+      style: TextStyle(color: Colors.white),
     );
   }
 }
