@@ -1,7 +1,7 @@
 {
     "logs": [
         {
-            "outputFile": "/workspace/Flutter_Machine/torr_finder/build/url_launcher_android/intermediates/res/merged/release/values/values.xml",
+            "outputFile": "/workspace/Flutter_Machine/Torr_Finder_App/build/url_launcher_android/intermediates/res/merged/release/values/values.xml",
             "map": [
                 {
                     "source": "/workspace/.gradle/caches/transforms-2/files-2.1/03c633e46d75bfb21f082f0417f55161/jetified-window-1.0.0-beta04/res/values/values.xml",
@@ -44,7 +44,7 @@
             ]
         },
         {
-            "outputFile": "/workspace/Flutter_Machine/torr_finder/build/url_launcher_android/intermediates/incremental/mergeReleaseResources/merged.dir/values/values.xml",
+            "outputFile": "/workspace/Flutter_Machine/Torr_Finder_App/build/url_launcher_android/intermediates/incremental/mergeReleaseResources/merged.dir/values/values.xml",
             "map": [
                 {
                     "source": "/workspace/.gradle/caches/transforms-2/files-2.1/03c633e46d75bfb21f082f0417f55161/jetified-window-1.0.0-beta04/res/values/values.xml",

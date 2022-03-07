@@ -1,0 +1,4 @@
+io/flutter/plugins/GeneratedPluginRegistrant.java
+ io.flutter.plugins.GeneratedPluginRegistrant
+com/giridharsalana/torr_finder/BuildConfig.java
+ com.giridharsalana.torr_finder.BuildConfig

@@ -1,13 +1,22 @@
+import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:url_launcher/url_launcher.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 void main() {
   runApp(const MyApp());
 }
 
+// Main Global Vars
+
 final controller = TextEditingController();
 var query = "";
+final dio = Dio(BaseOptions(
+  baseUrl: 'https://torr-finder-api.herokuapp.com/search',
+  headers: {
+    "Accept": "application/json",
+  },
+));
 
 // This widget is the root of your application.
 class MyApp extends StatelessWidget {
@@ -75,8 +84,7 @@ class _MyHomePageState extends State<MyHomePage> {
                       builder: (BuildContext context) {
                         return Dialog(
                           shape: RoundedRectangleBorder(
-                              borderRadius: BorderRadius.circular(
-                                  20.0)), //this right here
+                              borderRadius: BorderRadius.circular(20.0)),
                           child: Container(
                             height: 350,
                             width: 280,
@@ -218,6 +226,7 @@ class _Searchbar extends State<Searchbar> {
                   child: TextField(
                     controller: controller,
                     textInputAction: TextInputAction.search,
+                    autofocus: true,
                     decoration: InputDecoration(
                       hintText: "Search Your Torrents!",
                       focusedBorder: OutlineInputBorder(
@@ -286,7 +295,6 @@ class _Searchbar extends State<Searchbar> {
 
 class Resultsbar extends StatefulWidget {
   const Resultsbar({Key? key}) : super(key: key);
-
   @override
   State<Resultsbar> createState() => _Resultsbar();
 }
@@ -294,10 +302,39 @@ class Resultsbar extends StatefulWidget {
 class _Resultsbar extends State<Resultsbar> {
   @override
   Widget build(BuildContext context) {
-    return Text(
-      'Query \n $query',
-      textAlign: TextAlign.center,
-      style: TextStyle(color: Colors.white),
+    return Column(
+      mainAxisAlignment: MainAxisAlignment.center,
+      crossAxisAlignment: CrossAxisAlignment.center,
+      children: <Widget>[
+        Text(
+          '$query',
+          textAlign: TextAlign.center,
+          style: TextStyle(color: Colors.red),
+        ),
+        // Container(
+        //   color: Colors.yellow,
+        //   margin: const EdgeInsets.all(10),
+        //   padding: const EdgeInsets.all(10),
+        // ),
+        // Expanded(
+        //   child: ListView(
+        //     children: Test_List.map((tor) {
+        //       return ListTile(
+        //         title: Text(
+        //           tor,
+        //           style: TextStyle(
+        //             color: Colors.white,
+        //             fontWeight: FontWeight.bold,
+        //           ),
+        //         ),
+        //         dense: true,
+        //         enabled: true,
+        //         selected: true,
+        //       );
+        //     }).toList(),
+        //   ),
+        // ),
+      ],
     );
   }
 }

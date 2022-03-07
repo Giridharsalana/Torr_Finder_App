@@ -1,26 +1,26 @@
 [
     {
-        "merged": "/workspace/Flutter_Machine/torr_finder/build/fluttertoast/intermediates/res/merged/release/drawable/toast_bg.xml",
-        "source": "/home/gitpod/.pub-cache/hosted/pub.dartlang.org/fluttertoast-8.0.9/android/src/main/res/drawable/toast_bg.xml"
-    },
-    {
-        "merged": "/workspace/Flutter_Machine/torr_finder/build/fluttertoast/intermediates/res/merged/release/drawable/notification_bg.xml",
-        "source": "/workspace/.gradle/caches/transforms-2/files-2.1/122df2e57d294d1a53db26bbc3b813c1/core-1.6.0/res/drawable/notification_bg.xml"
-    },
-    {
-        "merged": "/workspace/Flutter_Machine/torr_finder/build/fluttertoast/intermediates/res/merged/release/drawable/notification_icon_background.xml",
+        "merged": "/workspace/Flutter_Machine/Torr_Finder_App/build/fluttertoast/intermediates/res/merged/release/drawable/notification_icon_background.xml",
         "source": "/workspace/.gradle/caches/transforms-2/files-2.1/122df2e57d294d1a53db26bbc3b813c1/core-1.6.0/res/drawable/notification_icon_background.xml"
     },
     {
-        "merged": "/workspace/Flutter_Machine/torr_finder/build/fluttertoast/intermediates/res/merged/release/drawable/notification_bg_low.xml",
-        "source": "/workspace/.gradle/caches/transforms-2/files-2.1/122df2e57d294d1a53db26bbc3b813c1/core-1.6.0/res/drawable/notification_bg_low.xml"
+        "merged": "/workspace/Flutter_Machine/Torr_Finder_App/build/fluttertoast/intermediates/res/merged/release/drawable/toast_bg.xml",
+        "source": "/home/gitpod/.pub-cache/hosted/pub.dartlang.org/fluttertoast-8.0.9/android/src/main/res/drawable/toast_bg.xml"
     },
     {
-        "merged": "/workspace/Flutter_Machine/torr_finder/build/fluttertoast/intermediates/res/merged/release/drawable/notification_tile_bg.xml",
+        "merged": "/workspace/Flutter_Machine/Torr_Finder_App/build/fluttertoast/intermediates/res/merged/release/drawable/notification_tile_bg.xml",
         "source": "/workspace/.gradle/caches/transforms-2/files-2.1/122df2e57d294d1a53db26bbc3b813c1/core-1.6.0/res/drawable/notification_tile_bg.xml"
     },
     {
-        "merged": "/workspace/Flutter_Machine/torr_finder/build/fluttertoast/intermediates/res/merged/release/drawable/corner.xml",
+        "merged": "/workspace/Flutter_Machine/Torr_Finder_App/build/fluttertoast/intermediates/res/merged/release/drawable/notification_bg_low.xml",
+        "source": "/workspace/.gradle/caches/transforms-2/files-2.1/122df2e57d294d1a53db26bbc3b813c1/core-1.6.0/res/drawable/notification_bg_low.xml"
+    },
+    {
+        "merged": "/workspace/Flutter_Machine/Torr_Finder_App/build/fluttertoast/intermediates/res/merged/release/drawable/corner.xml",
         "source": "/home/gitpod/.pub-cache/hosted/pub.dartlang.org/fluttertoast-8.0.9/android/src/main/res/drawable/corner.xml"
+    },
+    {
+        "merged": "/workspace/Flutter_Machine/Torr_Finder_App/build/fluttertoast/intermediates/res/merged/release/drawable/notification_bg.xml",
+        "source": "/workspace/.gradle/caches/transforms-2/files-2.1/122df2e57d294d1a53db26bbc3b813c1/core-1.6.0/res/drawable/notification_bg.xml"
     }
 ]
