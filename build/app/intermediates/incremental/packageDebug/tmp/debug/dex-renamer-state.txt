@@ -1,4 +1,0 @@
-#Mon Mar 07 17:02:18 UTC 2022
-base.0=/workspace/Flutter_Machine/Torr_Finder_App/build/app/intermediates/dex/debug/mergeDexDebug/classes.dex
-path.0=classes.dex
-renamed.0=classes.dex
