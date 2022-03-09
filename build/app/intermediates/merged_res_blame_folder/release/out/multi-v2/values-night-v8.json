@@ -1,10 +1,10 @@
 {
     "logs": [
         {
-            "outputFile": "/workspace/Flutter_Machine/Torr_Finder_App/build/app/intermediates/incremental/mergeReleaseResources/merged.dir/values-night-v8/values-night-v8.xml",
+            "outputFile": "/workspace/Cloud_Workspace/Flutter/Torr_Finder_App/build/app/intermediates/incremental/mergeReleaseResources/merged.dir/values-night-v8/values-night-v8.xml",
             "map": [
                 {
-                    "source": "/workspace/Flutter_Machine/Torr_Finder_App/android/app/src/main/res/values-night/styles.xml",
+                    "source": "/workspace/Cloud_Workspace/Flutter/Torr_Finder_App/android/app/src/main/res/values-night/styles.xml",
                     "from": {
                         "startLines": "3,14",
                         "startColumns": "4,4",

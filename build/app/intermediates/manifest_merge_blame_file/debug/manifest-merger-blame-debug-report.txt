@@ -13,11 +13,11 @@
 13         to allow setting breakpoints, to provide hot reload, etc.
 14    -->
 15    <uses-permission android:name="android.permission.INTERNET" />
-15-->/workspace/Flutter_Machine/Torr_Finder_App/android/app/src/main/AndroidManifest.xml:34:5-66
-15-->/workspace/Flutter_Machine/Torr_Finder_App/android/app/src/main/AndroidManifest.xml:34:22-64
+15-->/workspace/Cloud_Workspace/Flutter/Torr_Finder_App/android/app/src/main/AndroidManifest.xml:34:5-66
+15-->/workspace/Cloud_Workspace/Flutter/Torr_Finder_App/android/app/src/main/AndroidManifest.xml:34:22-64
 16    <uses-permission android:name="android.permission.QUERY_ALL_PACKAGES" />
-16-->/workspace/Flutter_Machine/Torr_Finder_App/android/app/src/main/AndroidManifest.xml:35:5-76
-16-->/workspace/Flutter_Machine/Torr_Finder_App/android/app/src/main/AndroidManifest.xml:35:22-74
+16-->/workspace/Cloud_Workspace/Flutter/Torr_Finder_App/android/app/src/main/AndroidManifest.xml:35:5-76
+16-->/workspace/Cloud_Workspace/Flutter/Torr_Finder_App/android/app/src/main/AndroidManifest.xml:35:22-74
 17
 18    <application
 19        android:name="android.app.Application"
@@ -60,13 +60,13 @@
 55            android:value="2" />
 56
 57        <activity
-57-->[:url_launcher_android] /workspace/Flutter_Machine/Torr_Finder_App/build/url_launcher_android/intermediates/library_manifest/debug/AndroidManifest.xml:8:9-11:74
+57-->[:url_launcher_android] /workspace/Cloud_Workspace/Flutter/Torr_Finder_App/build/url_launcher_android/intermediates/library_manifest/debug/AndroidManifest.xml:8:9-11:74
 58            android:name="io.flutter.plugins.urllauncher.WebViewActivity"
-58-->[:url_launcher_android] /workspace/Flutter_Machine/Torr_Finder_App/build/url_launcher_android/intermediates/library_manifest/debug/AndroidManifest.xml:9:13-74
+58-->[:url_launcher_android] /workspace/Cloud_Workspace/Flutter/Torr_Finder_App/build/url_launcher_android/intermediates/library_manifest/debug/AndroidManifest.xml:9:13-74
 59            android:exported="false"
-59-->[:url_launcher_android] /workspace/Flutter_Machine/Torr_Finder_App/build/url_launcher_android/intermediates/library_manifest/debug/AndroidManifest.xml:10:13-37
+59-->[:url_launcher_android] /workspace/Cloud_Workspace/Flutter/Torr_Finder_App/build/url_launcher_android/intermediates/library_manifest/debug/AndroidManifest.xml:10:13-37
 60            android:theme="@android:style/Theme.NoTitleBar.Fullscreen" />
-60-->[:url_launcher_android] /workspace/Flutter_Machine/Torr_Finder_App/build/url_launcher_android/intermediates/library_manifest/debug/AndroidManifest.xml:11:13-71
+60-->[:url_launcher_android] /workspace/Cloud_Workspace/Flutter/Torr_Finder_App/build/url_launcher_android/intermediates/library_manifest/debug/AndroidManifest.xml:11:13-71
 61
 62        <uses-library
 62-->[androidx.window:window:1.0.0-beta04] /workspace/.gradle/caches/transforms-2/files-2.1/03c633e46d75bfb21f082f0417f55161/jetified-window-1.0.0-beta04/AndroidManifest.xml:25:9-27:40

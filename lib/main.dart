@@ -1,6 +1,8 @@
 import 'package:dio/dio.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter/material.dart';
 import 'package:url_launcher/url_launcher.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 void main() {
@@ -10,13 +12,16 @@ void main() {
 // Main Global Vars
 
 final controller = TextEditingController();
-var query = "";
-final dio = Dio(BaseOptions(
-  baseUrl: 'https://torr-finder-api.herokuapp.com/search',
-  headers: {
-    "Accept": "application/json",
-  },
-));
+final dio = Dio(
+  BaseOptions(
+    baseUrl: 'https://torr-finder-api.herokuapp.com/search',
+    headers: {
+      "Accept": "application/json",
+    },
+  ),
+);
+String query = "";
+List Tors = [];
 
 // This widget is the root of your application.
 class MyApp extends StatelessWidget {
@@ -51,6 +56,8 @@ class _MyHomePageState extends State<MyHomePage> {
     setState(() {
       query = '';
       controller.clear();
+      Tors = [];
+      FocusManager.instance.primaryFocus?.unfocus();
     });
   }
 
@@ -205,6 +212,22 @@ class Searchbar extends StatefulWidget {
   const Searchbar({Key? key, required this.onClick}) : super(key: key);
 
   final Function onClick;
+  void SearchTorrents(String query, Function onClick) async {
+    Tors = [];
+    // print("Number of Torrents Bf : ${Tors.length}");
+    try {
+      final response = await dio.get('', queryParameters: {
+        'query': query,
+      });
+      if (response.statusCode == 200) {
+        Tors = response.data;
+        // print("Number of Torrents Af : ${Tors.length}");
+      }
+    } catch (e) {
+      print(e);
+    }
+    onClick();
+  }
 
   @override
   State<Searchbar> createState() => _Searchbar();
@@ -248,6 +271,7 @@ class _Searchbar extends State<Searchbar> {
                       setState(() {
                         query = controller.text;
                         widget.onClick();
+                        widget.SearchTorrents(query, widget.onClick);
                       });
                     },
                   ),
@@ -281,6 +305,8 @@ class _Searchbar extends State<Searchbar> {
                         setState(() {
                           query = controller.text;
                           widget.onClick();
+                          FocusManager.instance.primaryFocus?.unfocus();
+                          widget.SearchTorrents(query, widget.onClick);
                         });
                       },
                     ),
@@ -297,6 +323,28 @@ class _Searchbar extends State<Searchbar> {
 
 class Resultsbar extends StatefulWidget {
   const Resultsbar({Key? key}) : super(key: key);
+
+  void CopyToClipboard(textcp) async {
+    await Clipboard.setData(ClipboardData(text: textcp));
+  }
+
+  void ShowToast() {
+    Fluttertoast.showToast(
+      msg: "Magnet Copied!",
+      toastLength: Toast.LENGTH_SHORT,
+      //gravity: ToastGravity.CENTER,
+      timeInSecForIosWeb: 1,
+      backgroundColor: Colors.black,
+      textColor: Colors.red,
+      fontSize: 16.0,
+    );
+  }
+
+  void OnTileClick(text) {
+    CopyToClipboard(text);
+    ShowToast();
+  }
+
   @override
   State<Resultsbar> createState() => _Resultsbar();
 }
@@ -308,27 +356,53 @@ class _Resultsbar extends State<Resultsbar> {
       children: <Widget>[
         Expanded(
           child: ListView.builder(
-            itemCount: 1000,
+            itemCount: Tors.length,
             itemBuilder: (context, index) {
               return Container(
                 margin: EdgeInsets.only(left: 10, right: 10),
                 alignment: Alignment.center,
                 child: ListTile(
                   title: Text(
-                    "Query \{$query\} Query",
+                    Tors[index]['Title'],
                     style: TextStyle(color: Colors.white),
                     textAlign: TextAlign.center,
                   ),
-                  subtitle: Text(
-                    "Subtitle",
-                    style: TextStyle(color: Colors.yellow),
+                  subtitle: RichText(
                     textAlign: TextAlign.center,
+                    text: TextSpan(
+                      style: DefaultTextStyle.of(context).style,
+                      children: <TextSpan>[
+                        TextSpan(
+                          text: "Seeders : " + Tors[index]['Seeders'],
+                          style: TextStyle(
+                            color: Colors.yellow,
+                            fontWeight: FontWeight.bold,
+                          ),
+                        ),
+                        TextSpan(
+                          text:
+                              "    " + "Size : " + Tors[index]['Size'] + "    ",
+                          style: TextStyle(
+                            color: Colors.red,
+                            fontWeight: FontWeight.bold,
+                          ),
+                        ),
+                        TextSpan(
+                          text: "Leeches : " + Tors[index]['Leechers'],
+                          style: TextStyle(
+                            color: Colors.yellow,
+                            fontWeight: FontWeight.bold,
+                          ),
+                        ),
+                      ],
+                    ),
                   ),
-                  // dense: true,
+                  dense: true,
                   enabled: true,
                   selected: true,
-                  onTap: () => {},
-                  onLongPress: () => {},
+                  onTap: () => {widget.OnTileClick(Tors[index]['Magnet'])},
+                  onLongPress: () =>
+                      {widget.OnTileClick(Tors[index]['Magnet'])},
                 ),
               );
             },
