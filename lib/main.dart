@@ -362,62 +362,70 @@ class _Resultsbar extends State<Resultsbar> {
   @override
   Widget build(BuildContext context) {
     return Column(
+      mainAxisAlignment: MainAxisAlignment.center,
+      crossAxisAlignment: CrossAxisAlignment.center,
       children: <Widget>[
-        !isSearching ? Expanded(
-          child: ListView.builder(
-            itemCount: Tors.length,
-            itemBuilder: (context, index) {
-              return Container(
-                margin: EdgeInsets.only(left: 10, right: 10),
-                alignment: Alignment.center,
-                child: ListTile(
-                  title: Text(
-                    Tors[index]['Title'],
-                    style: TextStyle(color: Colors.white),
-                    textAlign: TextAlign.center,
-                  ),
-                  subtitle: RichText(
-                    textAlign: TextAlign.center,
-                    text: TextSpan(
-                      style: DefaultTextStyle.of(context).style,
-                      children: <TextSpan>[
-                        TextSpan(
-                          text: "Seeders : " + Tors[index]['Seeders'],
-                          style: TextStyle(
-                            color: Colors.yellow,
-                            fontWeight: FontWeight.bold,
+        !isSearching
+            ? Expanded(
+                child: ListView.builder(
+                  itemCount: Tors.length,
+                  itemBuilder: (context, index) {
+                    return Container(
+                      margin: EdgeInsets.only(left: 10, right: 10),
+                      alignment: Alignment.center,
+                      child: ListTile(
+                        title: Text(
+                          Tors[index]['Title'],
+                          style: TextStyle(color: Colors.white),
+                          textAlign: TextAlign.center,
+                        ),
+                        subtitle: RichText(
+                          textAlign: TextAlign.center,
+                          text: TextSpan(
+                            style: DefaultTextStyle.of(context).style,
+                            children: <TextSpan>[
+                              TextSpan(
+                                text: "Seeders : " + Tors[index]['Seeders'],
+                                style: TextStyle(
+                                  color: Colors.yellow,
+                                  fontWeight: FontWeight.bold,
+                                ),
+                              ),
+                              TextSpan(
+                                text: "    " +
+                                    "Size : " +
+                                    Tors[index]['Size'] +
+                                    "    ",
+                                style: TextStyle(
+                                  color: Colors.red,
+                                  fontWeight: FontWeight.bold,
+                                ),
+                              ),
+                              TextSpan(
+                                text: "Leeches : " + Tors[index]['Leechers'],
+                                style: TextStyle(
+                                  color: Colors.yellow,
+                                  fontWeight: FontWeight.bold,
+                                ),
+                              ),
+                            ],
                           ),
                         ),
-                        TextSpan(
-                          text:
-                              "    " + "Size : " + Tors[index]['Size'] + "    ",
-                          style: TextStyle(
-                            color: Colors.red,
-                            fontWeight: FontWeight.bold,
-                          ),
-                        ),
-                        TextSpan(
-                          text: "Leeches : " + Tors[index]['Leechers'],
-                          style: TextStyle(
-                            color: Colors.yellow,
-                            fontWeight: FontWeight.bold,
-                          ),
-                        ),
-                      ],
-                    ),
-                  ),
-                  dense: true,
-                  enabled: true,
-                  selected: true,
-                  onTap: () => {widget.OnTileClick(Tors[index]['Magnet'])},
-                  onLongPress: () =>
-                      {widget.OnTileClick(Tors[index]['Magnet'])},
+                        dense: true,
+                        enabled: true,
+                        selected: true,
+                        onTap: () =>
+                            {widget.OnTileClick(Tors[index]['Magnet'])},
+                        onLongPress: () =>
+                            {widget.OnTileClick(Tors[index]['Magnet'])},
+                      ),
+                    );
+                  },
                 ),
-              );
-            },
-          ),
-        ) 
-        : CircularProgressIndicator(),
+              )
+            : Center(
+                child: CircularProgressIndicator(),
+              ),
       ],
     );
   }
