@@ -1,4 +1,4 @@
-#Thu Mar 10 16:02:26 UTC 2022
-base.0=/workspace/Cloud_Workspace/Flutter/Torr_Finder_App/build/app/intermediates/dex/release/minifyReleaseWithR8/classes.dex
-renamed.0=classes.dex
+#Sat Mar 12 07:49:31 UTC 2022
+base.0=/home/giri/Desktop/Learnings/Flutter/Torr_Finder_App/build/app/intermediates/dex/release/minifyReleaseWithR8/classes.dex
 path.0=classes.dex
+renamed.0=classes.dex
